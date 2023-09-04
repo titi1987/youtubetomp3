@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube to MP3 Downloader</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+</head>
+<body>
+    <h1>Download YouTube Videos for Mp3</h1>
+    <form method="POST" action="{{ url_for('download') }}">
+        <label for="url">Enter YouTube video URL:</label><br>
+        <input type="text" id="url" name="url"><br><br>
+        <input type="submit" value="Download MP3">
+    </form>
+</body>
+</html>
