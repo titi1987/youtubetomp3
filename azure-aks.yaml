@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-python-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-python-app
+  template:
+    metadata:
+      labels:
+        app: my-python-app
+    spec:
+      containers:
+      - name: mypythondockerrepo
+        image: dotnetappsqldb.azurecr.io/youtubetomp3:latest
+        ports:
+        - containerPort: 3000
+# service type load balancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-python-app-svc
+spec:
+  selector:
+    app: my-python-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 3000
+  type: LoadBalancer
